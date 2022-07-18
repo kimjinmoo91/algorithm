@@ -250,3 +250,84 @@ Solution.java:6: error: variable s is already defined in method solution(String)
         location: class Solution
 4 errors
 ```
+
+
+
+
+
+### 문제설명
+
+문제 설명
+문자열 s는 한 개 이상의 단어로 구성되어 있습니다. 각 단어는 하나 이상의 공백문자로 구분되어 있습니다.
+각 단어의 짝수번째 알파벳은 대문자로, 홀수번째 알파벳은 소문자로 바꾼 문자열을 리턴하는 함수, solution을 완성하세요.
+
+제한 사항
+문자열 전체의 짝/홀수 인덱스가 아니라, 단어(공백을 기준)별로 짝/홀수 인덱스를 판단해야합니다.
+첫 번째 글자는 0번째 인덱스로 보아 짝수번째 알파벳으로 처리해야 합니다.
+
+
+import java.util.Arrays;
+class Solution {
+public String solution(String s) {
+String answer = "";
+
+        String[] str = s.split(""); // s를 하나씩 읽어오기 위해 배열에 s를 넣음.
+
+        int idx = 0; //index번호 초기화(띄어쓰기마다 인덱스를 초기화해야해서 idx변수 만듦.)
+                }
+        for (int i = 0; i < str.length; i++) {
+            if (str.equals(" ")) { //String은 == 사용시 null 참조오류 발생할 수 있어서 equals로 비교해서 공백을 찾고 공백을 idx = 0 초기화한다.
+                idx = 0;  
+                    else if (idx % 2 == 0) {
+                    str[i] = str[i].toUpperCase(); //나머지가 0이면 대문자로 바꿔주고 증가시켜
+                    idx++;
+                }
+                    else if(idx % 2 != 0) {
+                    str[i] = str[i].toLowerCase(); //나머지가 0이 아니라면 소문자로 바꿔주고 증가시켜
+                    idx++;
+                }
+// idx가 짝수이면 toUpperCase(); 함수로 대문자로 변경하고
+// idx가 홀수이면 toLowerCase(); 함수로 소문자로 변경시켜줌.
+// 이후 idx를 증가시켜 띄어쓰기 이후 홀, 짝을 비교.
+
+                    answer += str[i];
+            } // for문 루프가 한번식 돌기 전마다 str[i]를 answer 에 적용합니다.
+            return answer;
+    }
+// 이런식으로 계속 루프가 돌면 문제에서 원하는 문자가 answer에 저장되고 answer을 return 합니다.
+}
+
+
+
+
+### 문제설명
+
+문제 설명
+함수 solution은 정수 n을 매개변수로 입력받습니다. n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요. 예를들어 n이 118372면 873211을 리턴하면 됩니다.
+
+제한 조건
+n은 1이상 8000000000 이하인 자연수입니다.
+
+
+
+import java.util.*;
+
+class Solution {
+public long solution(long n) {
+long answer = 0;
+
+        String[] arrStr = Long.toString(n).split("");
+//내림차순하기위해서는 배열을 이용합니다.
+//배열을 이용하기 위해서는 정수의 long type->String(문자열)->String[] 문자배열 => Long->String->String[]
+// [1,1,8,3,7,2]
+        
+        Arrays.sort(arrStr, Collections.reverseOrder());
+//배열로 내림차순을 만들어준다 이 단계는 [8,7,3,2,1,1] 
+검색:Arrays 메소드 ->Arrays.sort(a, Collections.reverseOrder());
+        
+        return Long.parseLong(String.join("", arrStr));
+// String의 배열이었던 것을 원래대로의 Long type로 복구시키는 작업.  -> Long.parseLong()
+// String.join("", arrStr)의 String = 배열로 만드느라 벌려놓은 문자열<=>split
+
+    }
+}
