@@ -291,10 +291,10 @@ String answer = "";
 // 이후 idx를 증가시켜 띄어쓰기 이후 홀, 짝을 비교.
 
                     answer += str[i];
-            } // for문 루프가 한번식 돌기 전마다 str[i]를 answer 에 적용합니다.
+            } // for문 루프가 한번식 돌기 전마다 str[i]를 answer 에 적용.
             return answer;
     }
-// 이런식으로 계속 루프가 돌면 문제에서 원하는 문자가 answer에 저장되고 answer을 return 합니다.
+// 이런식으로 계속 루프가 돌면 문제에서 문자가 answer에 저장되고 answer을 return.
 }
 
 
